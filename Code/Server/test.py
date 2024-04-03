@@ -25,35 +25,37 @@ from Motor import *
 PWM=Motor()          
 def test_Motor(): 
     try:
-        PWM.setMotorModel(1000,1000,1000,1000)       #Forward
+        s=1.5
+        PWM.setMotorModel(int(1000*s),int(1000*s),int(1000*s),int(1000*s))       #Forward
         print ("The car is moving forward")
+        #time.sleep(5)
         time.sleep(1)
-        PWM.setMotorModel(-1000,-1000,-1000,-1000)   #Back
+        PWM.setMotorModel(int(-1000*s),int(-1000*s),int(-1000*s),int(-1000*s))   #Back
         print ("The car is going backwards")
         time.sleep(1)
-        PWM.setMotorModel(-1500,-1500,2000,2000)       #Turn left
+        PWM.setMotorModel(int(-1500*s),int(-1500*s),int(2000*s),int(2000*s))       #Turn left
         print ("The car is turning left")
         time.sleep(1)
-        PWM.setMotorModel(2000,2000,-1500,-1500)       #Turn right 
+        PWM.setMotorModel(int(2000*s),int(2000*s),int(-1500*s),int(-1500*s))       #Turn right 
         print ("The car is turning right")  
         time.sleep(1)
-        PWM.setMotorModel(-2000,2000,2000,-2000)       #Move left 
+        PWM.setMotorModel(int(-2000*s),int(2000*s),int(2000*s),int(-2000*s))       #Move left 
         print ("The car is moving left")  
         time.sleep(1)
-        PWM.setMotorModel(2000,-2000,-2000,2000)       #Move right 
+        PWM.setMotorModel(int(2000*s),int(-2000*s),int(-2000*s),int(2000*s))       #Move right 
         print ("The car is moving right")  
         time.sleep(1)    
             
-        PWM.setMotorModel(0,2000,2000,0)       #Move diagonally to the left and forward
+        PWM.setMotorModel(int(0*s),int(2000*s),int(2000*s),int(0*s))       #Move diagonally to the left and forward
         print ("The car is moving diagonally to the left and forward")  
         time.sleep(1)
-        PWM.setMotorModel(0,-2000,-2000,0)       #Move diagonally to the right and backward
+        PWM.setMotorModel(int(0*s),int(-2000*s),int(-2000*s),int(0*s))       #Move diagonally to the right and backward
         print ("The car is moving diagonally to the right and backward")  
         time.sleep(1) 
-        PWM.setMotorModel(2000,0,2000,00)       #Move diagonally to the right and forward
+        PWM.setMotorModel(int(2000*s),int(0*s),int(2000*s),int(0*s))       #Move diagonally to the right and forward
         print ("The car is moving diagonally to the right and forward")  
         time.sleep(1)
-        PWM.setMotorModel(-2000,0,-2000,0)       #Move diagonally to the left and backward
+        PWM.setMotorModel(int(-2000*s),int(0*s),int(-2000*s),int(0*s))       #Move diagonally to the left and backward
         print ("The car is moving diagonally to the left and backward")  
         time.sleep(1) 
         
@@ -102,16 +104,17 @@ pwm=Servo()
 def test_Servo():
     try:
         while True:
-            for i in range(50,110,1):
-                pwm.setServoPwm('0',i)
-                time.sleep(0.01)
-            for i in range(110,50,-1):
-                pwm.setServoPwm('0',i)
-                time.sleep(0.01)
-            for i in range(80,150,1):
+            if True:
+                for i in range(50,110,1):
+                    pwm.setServoPwm('0',i)
+                    time.sleep(0.1)
+                for i in range(110,50,-1):
+                    pwm.setServoPwm('0',i)
+                    time.sleep(0.1)
+            for i in range(55,150,1):
                 pwm.setServoPwm('1',i)
                 time.sleep(0.01)
-            for i in range(150,80,-1):
+            for i in range(150,55,-1):
                 pwm.setServoPwm('1',i)
                 time.sleep(0.01)   
     except KeyboardInterrupt:
